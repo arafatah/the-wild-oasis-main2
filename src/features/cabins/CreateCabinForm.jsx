@@ -7,7 +7,8 @@ import Textarea from "../../ui/Textarea";
 import { useForm } from "react-hook-form";
 import FormRow from "../../ui/FormRow";
 import { useCreateCabin } from "./useCreateCabin";
-import { useEditCabin } from "../settings/useUpdateSetting";
+import { useEditCabin } from "./useEditCabin";
+// import { useEditCabin } from "../settings/useUpdateSetting";
 
 function CreateCabinForm({ cabinToEdit = {} }) {
   const { isCreating, createCabin } = useCreateCabin();
