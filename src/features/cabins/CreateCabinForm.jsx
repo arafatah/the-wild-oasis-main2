@@ -21,9 +21,9 @@ function CreateCabinForm({ cabinToEdit = {} }) {
   const { register, handleSubmit, reset, getValues, formState } = useForm({
     defaultValues: isEditSession ? editValues : {},
   });
-
+  
   const { errors } = formState;
-
+ 
   function onSubmit(data) {
     const image = typeof data.image === "string" ? data.image : data.image[0];
 
