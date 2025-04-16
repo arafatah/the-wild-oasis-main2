@@ -14,7 +14,7 @@ function CreateCabinForm({ cabinToEdit = {} }) {
   const { isCreating, createCabin } = useCreateCabin();
   const { isEditing, editCabin } = useEditCabin();
   const isWorking = isCreating || isEditing;
-
+  
   const { id: editId, ...editValues } = cabinToEdit;
   const isEditSession = Boolean(editId);
 
