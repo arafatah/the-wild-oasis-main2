@@ -108,7 +108,7 @@ function CabinRow({ cabin }) {
               <CreateCabinForm cabinToEdit={cabin} />
             </Modal.Window>
 
-            <Modal.Window name='delete'>
+            <Modal.Window name="delete">
               <ConfirmDelete
                 resourceName="cabins"
                 disabled={isDeleting}

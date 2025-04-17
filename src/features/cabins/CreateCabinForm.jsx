@@ -8,7 +8,6 @@ import { useForm } from "react-hook-form";
 import FormRow from "../../ui/FormRow";
 import { useCreateCabin } from "./useCreateCabin";
 import { useEditCabin } from "./useEditCabin";
-// import { useEditCabin } from "../settings/useUpdateSetting";
 
 function CreateCabinForm({ cabinToEdit = {}, onClose }) {
   const { isCreating, createCabin } = useCreateCabin();
@@ -99,12 +98,12 @@ function CreateCabinForm({ cabinToEdit = {}, onClose }) {
         />
       </FormRow>
 
-      <FormRow label="discount" error={errors?.discount?.message}>
+      <FormRow label="Discount" error={errors?.discount?.message}>
         <Input
           type="number"
           id="discount"
-          defaultValue={0}
           disabled={isWorking}
+          defaultValue={0}
           {...register("discount", {
             required: "This field is required",
             validate: (value) =>
@@ -139,7 +138,7 @@ function CreateCabinForm({ cabinToEdit = {}, onClose }) {
 
       <FormRow>
         {/* type is an HTML attribute! */}
-        <Button onClick={() => onClose?.()} variation="secondary" type="reset">
+        <Button variation="secondary" type="reset" onClick={() => onClose?.()}>
           Cancel
         </Button>
         <Button disabled={isWorking}>
