@@ -78,6 +78,7 @@ function Header({ children }) {
     </StyledHeader>
   );
 }
+
 function Row({ children }) {
   const { columns } = useContext(TableContext);
   return (
@@ -86,6 +87,7 @@ function Row({ children }) {
     </StyledRow>
   );
 }
+
 function Body({ data, render }) {
   if (!data) return <Empty>No data to show at this moment</Empty>;
   return <StyledBody>{data.map(render)}</StyledBody>;
