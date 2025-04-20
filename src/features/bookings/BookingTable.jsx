@@ -3,11 +3,16 @@ import Table from "../../ui/Table";
 import Menus from "../../ui/Menus";
 import Empty from "../../ui/Empty";
 import { useBookings } from "./useBookings";
+import Spinner from "../../ui/Spinner";
 
 function BookingTable() {
   const { bookings, isLoading } = useBookings();
-
-  if (!bookings.length) return <Empty resourceName="bookings" />;
+  
+  // If still loading, return the spinner
+  if (isLoading) return <Spinner />;
+  
+  // If no bookings or undefined, show empty state
+  if (!bookings?.length) return <Empty resourceName="bookings" />;
 
   return (
     <Menus>
