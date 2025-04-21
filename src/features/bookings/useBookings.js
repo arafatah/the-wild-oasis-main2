@@ -13,11 +13,11 @@ export function useBookings() {
       : { field: "status", value: filterValue };
 
   const {
-    data: bookings,
     isLoading,
+    data: bookings,
     error,
   } = useQuery({
-    queryKey: ["bookings"],
+    queryKey: ["bookings", filter],
     queryFn: () => getBookings({ filter }),
   });
 
