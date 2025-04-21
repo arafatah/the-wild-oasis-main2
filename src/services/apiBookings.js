@@ -15,7 +15,7 @@ export async function getBookings({filter, }) {
 
   return data;
 }
-
+  
 export async function getBooking(id) {
   const { data, error } = await supabase
     .from("bookings")
