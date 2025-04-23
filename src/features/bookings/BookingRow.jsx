@@ -90,7 +90,10 @@ function BookingRow({
         <Menus.List id={bookingId}>
           <Menus.Button
             icon={<HiEye />}
-            onClick={() => navigate(`/bookings/${bookingId}`)}
+            onClick={() => {
+              console.log("Navigating to:", `/bookings/${bookingId}`);
+              navigate(`/bookings/${bookingId}`);
+            }}
           >
             See details
           </Menus.Button>
@@ -98,9 +101,9 @@ function BookingRow({
           {status === "unconfirmed" && (
             <Menus.Button
               icon={<HiArrowDownOnSquare />}
-              onClick={() => navigate(`/bookings/${bookingId}`)}
+              onClick={() => navigate(`/checkin/${bookingId}`)}
             >
-              Check-in
+              Check in
             </Menus.Button>
           )}
         </Menus.List>
