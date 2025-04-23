@@ -15,7 +15,6 @@ import Checkbox from "../../ui/Checkbox";
 import { formatCurrency } from "../../utils/helpers";
 import { useChecking } from "./useChecking";
 
-
 const Box = styled.div`
   /* Box */
   background-color: var(--color-grey-0);
@@ -26,8 +25,8 @@ const Box = styled.div`
 
 function CheckinBooking() {
   const [confirmPaid, setConfirmPaid] = useState(false);
+  const [addBreakfast, setAddBreakfast] = useState(false);
   const { booking, isLoading } = useBooking();
- 
 
   useEffect(() => setConfirmPaid(booking?.isPaid ?? false), [booking?.isPaid]);
 
@@ -58,6 +57,19 @@ function CheckinBooking() {
       </Row>
 
       <BookingDataBox booking={booking} />
+
+      <Box>
+        <Checkbox
+          checked={addBreakfast}
+          onChange={() => {
+            setAddBreakfast((add) => !add);
+            setConfirmPaid(false);
+          }}
+          id="breakfast"
+        >
+          Want to add breakfast for X?
+        </Checkbox>
+      </Box>
 
       <Box>
         <Checkbox
