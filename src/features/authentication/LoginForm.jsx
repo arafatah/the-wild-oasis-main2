@@ -16,8 +16,8 @@ function LoginForm() {
     e.preventDefault();
     if (!email || !password) return;
     login({ email, password });
-  }
-
+  }   
+   
   return (
     <Form onSubmit={handleSubmit}>
       <FormRow label="Email address">
