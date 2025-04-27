@@ -11,7 +11,7 @@ const StyledUserAvatar = styled.div`
 `;
 
 const Avatar = styled.img`
-  display: block;
+  display: flex;
   width: 4rem;
   width: 3.6rem;
   aspect-ratio: 1;
@@ -31,7 +31,7 @@ function UserAvatar() {
         src={avatar || "default-user.jpg"}
         alt={`Avatar of ${fullName}`}
       />
-      <span>{fullName}</span>
+      <span>{fullName || 'Anonymous'} </span>
     </StyledUserAvatar>
   );
 }
