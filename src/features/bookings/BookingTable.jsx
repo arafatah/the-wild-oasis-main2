@@ -7,11 +7,10 @@ import Spinner from "../../ui/Spinner";
 import Pagination from "../../ui/Pagination";
 
 function BookingTable() {
-  const { bookings, isLoading, count } = useBookings();
-  console.log(bookings);
-
+  const { bookings, isPending, count } = useBookings();
+  
   // If still loading, return the spinner
-  if (isLoading) return <Spinner />;
+  if (isPending) return <Spinner />;
 
   // If no bookings or undefined, show empty state
   if (!bookings?.length) return <Empty resourceName="bookings" />;
