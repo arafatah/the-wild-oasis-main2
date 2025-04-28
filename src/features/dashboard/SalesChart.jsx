@@ -11,7 +11,7 @@ import {
   YAxis,
 } from "recharts";
 import { useDarkMode } from "../../context/DarkModeContext";
-import { eachDayOfInterval, subDays } from "date-fns";
+import { eachDayOfInterval, format, isSameDay, subDays } from "date-fns";
 
 const StyledSalesChart = styled(DashboardBox)`
   grid-column: 1 / -1;
@@ -63,6 +63,22 @@ function SalesChart({ bookings, numDays }) {
     end: new Date(),
   });
 
+  const data = allDates.map((date) => {
+    return {
+      label: format(date, "MMM dd"),
+      totalSales: bookings?.length
+        ? bookings
+            .filter((booking) => isSameDay(date, new Date(booking.created_at)))
+            .reduce((acc, cur) => acc + cur.totalPrice, 0)
+        : 0,
+      extrasSales: bookings?.length
+        ? bookings
+            .filter((booking) => isSameDay(date, new Date(booking.created_at)))
+            .reduce((acc, cur) => acc + cur.extrasPrice, 0)
+        : 0,
+    };
+  });
+
   const colors = isDarkMode
     ? {
         totalSales: { stroke: "#4f46e5", fill: "#4f46e5" },
@@ -82,7 +98,7 @@ function SalesChart({ bookings, numDays }) {
       <Heading as="h2">Sales</Heading>
 
       <ResponsiveContainer height={300} width="100%">
-        <AreaChart data={fakeData}>
+        <AreaChart data={data}>
           <XAxis
             dataKey="label"
             tick={{ fill: colors.text }}
